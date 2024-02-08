@@ -1,10 +1,8 @@
-package com.kiylx.dependences
+package com.kiylx.common.dependences
 
 object AndroidBuildCode {
     //android
     const val compileSdk = 34
-//    const val applicationId = ""
-//    const val namespace = ""
     const val minSdk = 26
     const val targetSdk = 32
     const val versionCode = 1

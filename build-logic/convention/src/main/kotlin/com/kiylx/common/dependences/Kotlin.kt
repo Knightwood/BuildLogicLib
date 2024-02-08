@@ -1,6 +1,13 @@
-package com.kiylx.dependences.basic
+package com.kiylx.common.dependences
 
-
+object Kotlin {
+    val libs =KotlinLibs()
+}
+class KotlinLibs internal constructor(){
+    val serialization=KotlinSerialization
+    val coroutines=Coroutines
+    val ktor =Ktor
+}
 object KotlinSerialization {
     //kotlin序列化 kt 1.7.10
     const val serialization140 = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0"

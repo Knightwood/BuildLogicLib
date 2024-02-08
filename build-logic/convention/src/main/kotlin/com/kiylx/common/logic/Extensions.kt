@@ -1,13 +1,8 @@
-package com.kiylx.dependences
+package com.kiylx.common.logic
 
 import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.CommonExtension
-import com.kiylx.dependences.androidTestImplementation
-import com.kiylx.dependences.basic.Coroutines
-import com.kiylx.dependences.basic.compose.ComposeLibsName
-import com.kiylx.dependences.basic.view.ViewTest
-import com.kiylx.dependences.debugImplementation
-import com.kiylx.dependences.implementation
+import com.kiylx.common.dependences.AndroidX
+import com.kiylx.common.dependences.Kotlin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.DependencyHandlerScope
@@ -15,20 +10,21 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
 fun DependencyHandlerScope.kotlinProject() {
-    implementation(Coroutines.core)
-    implementation(Coroutines.android)
+    implementation(Kotlin.libs.coroutines.core)
+    implementation(Kotlin.libs.coroutines.android)
 }
 
 fun DependencyHandlerScope.androidTest() {
-    "testImplementation"(ViewTest.jUnit)
-    "androidTestImplementation"(ViewTest.androidJUnit)
-    "androidTestImplementation"(ViewTest.espresso)
+    "testImplementation"(AndroidX.libs.test.jUnit)
+    "androidTestImplementation"(AndroidX.libs.test.androidJUnit)
+    "androidTestImplementation"(AndroidX.libs.test.espresso)
 }
 
 fun Project.configComposeWithBom(
     composeBomVersion: String
 ) {
-    extensions.getByType<ApplicationExtension>().run {
+    val that =this
+    extensions.getByType<ApplicationExtension>().apply {
         dependencies {
             val composeBom = platform("androidx.compose:compose-bom:${composeBomVersion}")
             implementation(composeBom)
@@ -64,7 +60,7 @@ fun Project.configComposeWithBom(
             // Optional - Integration with activities
             implementation("androidx.activity:activity-compose:1.7.2")
             // Optional - Integration with ViewModels
-            extensions.getByType<VersionCatalogsExtension>().named("composeLibs")
+            that.extensions.getByType<VersionCatalogsExtension>().named("buildLibs")
 //            implementation(composeLibs.findLibrary(ComposeLibsName.lifecycleViewModel).get())
             // Optional - Integration with LiveData
             implementation("androidx.compose.runtime:runtime-livedata")

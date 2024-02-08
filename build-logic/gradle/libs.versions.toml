@@ -21,6 +21,7 @@ androidx_collection = "1.3.0"
 
 ##################################################其他依赖的版本#########################################
 leak = "2.8.1"
+coil-kt = "2.2.2"
 kotlin_serialization_ver_160rc = "1.6.0-RC"
 
 [libraries]
@@ -73,6 +74,7 @@ androidx-collection = { module = "androidx.collection:collection-ktx", version.r
 ##################################其他依赖#########################################
 serialization160rc = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin_serialization_ver_160rc" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leak" }
+coil-kt = { module = "io.coil-kt:coil", version.ref = "coil-kt" }
 
 
 [plugins]
@@ -84,9 +86,9 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_ve
 
 ##################################内建插件#########################################
 # Plugins defined by this project
-kiylx-buildLogic-configCompose = { id = "com.kiylx.build_logic.configCompose", version = "unspecified" }
-kiylx-buildLogic-configCompose-module = { id = "com.kiylx.build_logic.configComposeModule", version = "unspecified" }
-kiylx-buildLogic-configAppModule = { id = "com.kiylx.build_logic.configAppModule", version = "unspecified" }
+kiylx-buildLogic-configCompose = { id = "com.kiylx.common.build_logic.configCompose", version = "unspecified" }
+kiylx-buildLogic-configCompose-module = { id = "com.kiylx.common.build_logic.configComposeModule", version = "unspecified" }
+kiylx-buildLogic-configAppModule = { id = "com.kiylx.common.build_logic.configAppModule", version = "unspecified" }
 
 ##################################其他插件#########################################
 # kotlin序列化插件的版本会跟kotlin编译器同时发布，因此一致

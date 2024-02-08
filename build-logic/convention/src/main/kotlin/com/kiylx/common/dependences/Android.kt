@@ -1,4 +1,17 @@
-package com.kiylx.dependences.basic.view
+package com.kiylx.common.dependences
+
+object AndroidX {
+    val libs = AndroidXLibs()
+}
+
+class AndroidXLibs internal constructor() {
+    val navigation = Navigation
+    val hilt = Hilt
+    val dataStore = Datastore
+    val work = Work
+    val room = Room
+    val test = ViewTest
+}
 
 object Navigation {
     private const val nav_version = "2.7.4"

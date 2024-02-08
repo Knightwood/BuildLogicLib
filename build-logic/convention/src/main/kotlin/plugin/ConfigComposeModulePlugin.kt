@@ -2,9 +2,8 @@ package plugin
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
-import com.kiylx.dependences.AndroidBuildCode
-import com.kiylx.dependences.basic.compose.configureAndroidCompose
-import com.kiylx.dependences.configComposeWithBom
+import com.kiylx.common.dependences.AndroidBuildCode
+import com.kiylx.common.logic.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

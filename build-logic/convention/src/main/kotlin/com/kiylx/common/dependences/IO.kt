@@ -1,4 +1,13 @@
-package com.kiylx.dependences.basic
+package com.kiylx.common.dependences
+
+object IO {
+    val libs =IoLibs()
+}
+class IoLibs internal constructor(){
+    val sqlite=SQLite
+    val okhttp=OkHttp
+    val retrofit2 =Retrofit2
+}
 
 object SQLite {
     private const val version = "2.3.0"

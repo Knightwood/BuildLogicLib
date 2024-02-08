@@ -1,24 +1,32 @@
-package com.kiylx.dependences.basic.compose
+package com.kiylx.common.dependences
 
-//compose基础依赖
-
-object Accompanist {
-    private const val group = "com.google.accompanist"
-    private const val version = "0.31.3-beta"
-
-    const val navigationAnimation = "$group:accompanist-navigation-animation:$version"
-    const val permissions = "$group:accompanist-permissions:$version"
-    const val systemUiController = "$group:accompanist-systemuicontroller:$version"
-    const val webView = "$group:accompanist-webview:$version"
-    const val pagerLayouts = "$group:accompanist-pager:$version"
-    const val pagerIndicators = "$group:accompanist-pager-indicators:$version"
-    const val flowlayout = "$group:accompanist-flowlayout:$version"
+//compose依赖
+object Compose {
+    val names = ComposeLibNames()
+    val libs = ComposeLibs()
 }
+
+/**
+ * compose库集合
+ */
+class ComposeLibs internal constructor() {
+    val accompanist = Accompanist
+    val glance = Glance
+}
+
+/**
+ * 一些命名的集合
+ */
+class ComposeLibNames internal constructor() {
+    val someLibName = SomeLibName
+    val composeBom = ComposeWithBomName
+}
+
 
 /**
  * 一些常用组件名，
  */
-object ComposeLibsName {
+object SomeLibName {
 
     // Lifecycle utilities for Compose
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose"
@@ -84,6 +92,19 @@ object ComposeWithBomName {
     const val uiViewBinding = "androidx.compose.ui: ui-viewbinding"
 }
 
+object Accompanist {
+    private const val group = "com.google.accompanist"
+    private const val version = "0.31.3-beta"
+
+    const val navigationAnimation = "$group:accompanist-navigation-animation:$version"
+    const val permissions = "$group:accompanist-permissions:$version"
+    const val systemUiController = "$group:accompanist-systemuicontroller:$version"
+    const val webView = "$group:accompanist-webview:$version"
+    const val pagerLayouts = "$group:accompanist-pager:$version"
+    const val pagerIndicators = "$group:accompanist-pager-indicators:$version"
+    const val flowlayout = "$group:accompanist-flowlayout:$version"
+}
+
 object Glance {
     private const val glance_version = "1.0.0"
 
@@ -93,5 +114,3 @@ object Glance {
     // For interop APIs with Material 3
     const val glance_material3 = "androidx.glance:glance-material3:$glance_version"
 }
-
-

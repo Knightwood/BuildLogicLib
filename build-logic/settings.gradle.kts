@@ -9,9 +9,6 @@ dependencyResolutionManagement {
         create("composeLibs") {
             from(files("./gradle/composeLibs.versions.toml"))
         }
-        create("ccc") {
-            from(files("../gradle/ccc.versions.toml"))
-        }
     }
 }
 

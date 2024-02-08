@@ -1,4 +1,4 @@
-package com.kiylx.dependences
+package com.kiylx.common.logic
 
 
 import org.gradle.api.Project
