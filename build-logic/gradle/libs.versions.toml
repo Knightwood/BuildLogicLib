@@ -86,9 +86,9 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_ve
 
 ##################################内建插件#########################################
 # Plugins defined by this project
-kiylx-buildLogic-configCompose = { id = "com.kiylx.common.build_logic.configCompose", version = "unspecified" }
-kiylx-buildLogic-configCompose-module = { id = "com.kiylx.common.build_logic.configComposeModule", version = "unspecified" }
-kiylx-buildLogic-configAppModule = { id = "com.kiylx.common.build_logic.configAppModule", version = "unspecified" }
+buildLogic-android-app = { id = "kiylx.build_logic.android.application", version = "unspecified" }
+buildLogic-android-app-compose = { id = "kiylx.build_logic.android.application.compose", version = "unspecified" }
+buildLogic-android-library-compose = { id = "kiylx.build_logic.android.library.compose", version = "unspecified" }
 
 ##################################其他插件#########################################
 # kotlin序列化插件的版本会跟kotlin编译器同时发布，因此一致

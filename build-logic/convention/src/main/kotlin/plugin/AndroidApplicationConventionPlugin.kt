@@ -1,8 +1,6 @@
 package plugin
 
-import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.kiylx.common.dependences.AndroidBuildCode
 import org.gradle.api.JavaVersion
@@ -14,22 +12,22 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 
 //通用的构建逻辑
-class BasicBuildLogicPlugin : Plugin<Project> {
+class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         println("BasicBuildLogic")
 
         with(target) {
             //配置plugin
-//            with(pluginManager) {
-//                apply("com.android.application")
-//                apply("org.jetbrains.kotlin.android")
-//            }
-
-            //或者可以这么写配置plugin
-            plugins.run {
+            with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
             }
+
+            //或者可以这么写配置plugin
+//            plugins.run {
+//                apply("com.android.application")
+//                apply("org.jetbrains.kotlin.android")
+//            }
 //            extensions.configure<CommonExtension<*, *, *, *, *>>("android") {
 //
 //            }
@@ -55,20 +53,7 @@ class BasicBuildLogicPlugin : Plugin<Project> {
 //                        useSupportLibrary = true
 //                    }
                 }
-                buildTypes {
-                    release {
-                        isMinifyEnabled = false
-                        proguardFiles(
-                            getDefaultProguardFile("proguard-android-optimize.txt"),
-                            "proguard-rules.pro"
-                        )
-                    }
-                    debug {
-                        applicationIdSuffix = ".debug"
-                        isMinifyEnabled = false
-                        isShrinkResources = false
-                    }
-                }
+
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17

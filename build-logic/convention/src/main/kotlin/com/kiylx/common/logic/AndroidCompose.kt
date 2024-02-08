@@ -3,9 +3,7 @@ package com.kiylx.common.logic
 import com.android.build.api.dsl.CommonExtension
 import com.kiylx.common.dependences.AndroidBuildCode
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 
 /**
  * Configure Compose-specific options
@@ -13,6 +11,17 @@ import org.gradle.kotlin.dsl.getByType
 internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
+    /**
+     * 注意这里的that，
+     * extensions.getByType<VersionCatalogsExtension>()需要在project做接收者的情况下才能查找到catalogs文件
+     * ,所以在这里定义了一下that去指向方法定义时的接收者，即project对象。
+     * 而且，这里查找的catalogs文件，是依靠project的，而这里的project,是app module的build.gradle.kt
+     * 因此，查找的catalogs文件也是在 app module 所处的环境定义/引入的catalogs文件，
+     * 即，项目的setting.gradle.kt中创建的catalogs文件
+     */
+    val that = this
+    val composeBomVersion = AndroidBuildCode.compose_bom
+
     commonExtension.apply {
         buildFeatures {
             compose = true
@@ -20,7 +29,6 @@ internal fun Project.configureAndroidCompose(
 
         composeOptions {
             kotlinCompilerExtensionVersion = AndroidBuildCode.compose_compiler_version
-//            kotlinCompilerExtensionVersion = composeLibs.findVersion("androidxComposeCompiler").get().toString()
         }
         packaging {
             resources {
@@ -28,11 +36,7 @@ internal fun Project.configureAndroidCompose(
             }
         }
         dependencies {
-//            val bom = composeLibs.findLibrary("androidx-compose-bom").get()
-//            add("implementation", platform(bom))
-//            add("androidTestImplementation", platform(bom))
-            val compose_bom="2024.01.00"
-            val composeBom = platform("androidx.compose:compose-bom:${compose_bom}")
+            val composeBom = platform("androidx.compose:compose-bom:${composeBomVersion}")
             implementation(composeBom)
             androidTestImplementation(composeBom)
 
@@ -64,15 +68,14 @@ internal fun Project.configureAndroidCompose(
             // Optional - Add window size utils
             implementation("androidx.compose.material3:material3-window-size-class")
             // Optional - Integration with activities
-            implementation("androidx.activity:activity-compose:1.7.2")
+            implementation(that.composeLibs.libFind("androidx-activity-compose"))
             // Optional - Integration with ViewModels
-            extensions.getByType<VersionCatalogsExtension>().named("composeLibs")
-//            implementation(composeLibs.findLibrary(ComposeLibsName.lifecycleViewModel).get())
+            implementation(that.composeLibs.libFind("androidx-lifecycle-viewmodel-compose"))
             // Optional - Integration with LiveData
             implementation("androidx.compose.runtime:runtime-livedata")
 
             //test
-            androidTestImplementation(platform("androidx.compose:compose-bom:${compose_bom}"))
+            androidTestImplementation(platform("androidx.compose:compose-bom:${composeBomVersion}"))
 
         }
 

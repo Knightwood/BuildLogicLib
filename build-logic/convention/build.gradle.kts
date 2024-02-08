@@ -38,17 +38,18 @@ dependencies {
 gradlePlugin {
 
     plugins {
-        register("ConfigComposePlugin") {
-            id = "com.kiylx.common.build_logic.configCompose"
-            implementationClass = "plugin.ConfigComposePlugin"
+        register("androidApplication") {
+            id = "kiylx.build_logic.android.application"
+            implementationClass = "plugin.AndroidApplicationConventionPlugin"
         }
-        register("ConfigComposeModulePlugin") {
-            id = "com.kiylx.common.build_logic.configComposeModule"
-            implementationClass = "plugin.ConfigComposeModulePlugin"
+        register("androidApplicationCompose") {
+            id = "kiylx.build_logic.android.application.compose"
+            implementationClass = "plugin.AndroidApplicationComposeConventionPlugin"
         }
-        register("BasicBuildLogicPlugin") {
-            id = "com.kiylx.common.build_logic.configAppModule"
-            implementationClass = "plugin.BasicBuildLogicPlugin"
+        register("androidLibraryCompose") {
+            id = "kiylx.build_logic.android.library.compose"
+            implementationClass = "plugin.AndroidLibraryComposeConventionPlugin"
         }
+
     }
 }
