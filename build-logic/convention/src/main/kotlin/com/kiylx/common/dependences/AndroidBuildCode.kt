@@ -1,9 +1,6 @@
 package com.kiylx.common.dependences
 
 object AndroidBuildCode {
-    //version catalogs file name
-    const val libs_name ="buildLibs"
-    const val composeLibs_name ="composeLibs"
 
     //android
     const val compileSdk = 34

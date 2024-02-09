@@ -12,7 +12,6 @@ group = "com.kiylx.common.build_logic"
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
-//    withSourcesJar()
 }
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
@@ -32,6 +31,12 @@ dependencies {
 //    validatePlugins {
 //        enableStricterValidation = true
 //        failOnWarning = true
+//    }
+//}
+
+//tasks.register("registerVersionCatalogs"){
+//    doLast{
+//
 //    }
 //}
 

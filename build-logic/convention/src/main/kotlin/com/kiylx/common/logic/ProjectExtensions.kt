@@ -17,12 +17,19 @@ import org.gradle.kotlin.dsl.getByType
 //所以，直接让build-logic模块setting.gradle.kt文件中注册的名称和项目的setting.gradle.kt文件中注册的名称一致，即可不用关心名称错乱问题
 val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>()
-        .named(AndroidBuildCode.libs_name)
+        .named("buildLibs")
 
 val Project.composeLibs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>()
-        .named(AndroidBuildCode.composeLibs_name)
+        .named("composeLibs")
 
+//object ProjectExtensions {
+//   lateinit var libs:VersionCatalog
+//       internal set
+//   lateinit var composeLibs:VersionCatalog
+//       internal set
+//
+//}
 /**
  * name不是依赖库的名字，而是catalogs文件中定义的名字，例如catalogs文件中有如下依赖
  * buildLogic-android-app-compose = { id = "kiylx.build_logic.android.application.compose", version = "unspecified" }
