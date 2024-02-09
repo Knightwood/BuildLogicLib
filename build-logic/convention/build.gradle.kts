@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
-//    `java-gradle-plugin`
+    `java-gradle-plugin`
 }
 
 group = "com.kiylx.common.build_logic"
@@ -54,6 +54,10 @@ gradlePlugin {
         register("androidLibraryCompose") {
             id = "kiylx.build_logic.android.library.compose"
             implementationClass = "plugin.AndroidLibraryComposeConventionPlugin"
+        }
+        register("emptyPlugin") {
+            id = "kiylx.build_logic.android.library.empty"
+            implementationClass = "plugin.AndroidLibraryEmptyConventionPlugin"
         }
 
     }
