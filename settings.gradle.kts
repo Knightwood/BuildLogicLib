@@ -4,6 +4,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.aliyun.com/repository/public/")
+        maven("https://maven.aliyun.com/repository/central")
+        maven("https://www.jitpack.io")
     }
 }
 dependencyResolutionManagement {
@@ -11,8 +14,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://www.jitpack.io")
+        maven("https://maven.aliyun.com/repository/public/")
+        maven("https://maven.aliyun.com/repository/central")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
     }
-    //将build-logic里的libs.versions.toml提供给整个项目使用
     versionCatalogs {
         create("buildLibs") {
             from(files("./build-logic/gradle/libs.versions.toml"))
@@ -20,10 +26,20 @@ dependencyResolutionManagement {
         create("composeLibs") {
             from(files("./build-logic/gradle/composeLibs.versions.toml"))
         }
+        create("others") {
+            from(files("./build-logic/gradle/others.versions.toml"))
+        }
     }
 }
-
-rootProject.name = "BuildLogicLib"
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "ComposeTemplate"
 include(":app")
+include(":libx")
+//include(":icon")
+include(":compose_lib")
+
+// Your relative path or absolute path
+//includeBuild("pullrefresh") {
+//    dependencySubstitution {
+//          substitute(module("me.omico.lux:lux-androidx-compose-material3-pullrefresh")).using(project(":"))
+//      }
+//  }

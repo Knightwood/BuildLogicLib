@@ -10,39 +10,14 @@ object Compose {
  * compose库集合
  */
 class ComposeLibs internal constructor() {
-    val accompanist = Accompanist
-    val glance = Glance
+
 }
 
 /**
  * 一些命名的集合
  */
 class ComposeLibNames internal constructor() {
-    val someLibName = SomeLibName
     val composeBom = ComposeWithBomName
-}
-
-
-/**
- * 一些常用组件名，
- */
-object SomeLibName {
-
-    // Lifecycle utilities for Compose
-    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose"
-
-    // ViewModel utilities for Compose
-    const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose"
-
-    //activity
-    const val activityCompose = "androidx.activity:activity-compose"
-
-    //布局
-    const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout-compose"
-
-    //导航
-    const val navigation = "androidx.navigation:navigation-compose"
 }
 
 /**
@@ -90,27 +65,4 @@ object ComposeWithBomName {
     const val uiUnit = "androidx.compose.ui: ui-unit"
     const val uiUtil = "androidx.compose.ui: ui-util"
     const val uiViewBinding = "androidx.compose.ui: ui-viewbinding"
-}
-
-object Accompanist {
-    private const val group = "com.google.accompanist"
-    private const val version = "0.31.3-beta"
-
-    const val navigationAnimation = "$group:accompanist-navigation-animation:$version"
-    const val permissions = "$group:accompanist-permissions:$version"
-    const val systemUiController = "$group:accompanist-systemuicontroller:$version"
-    const val webView = "$group:accompanist-webview:$version"
-    const val pagerLayouts = "$group:accompanist-pager:$version"
-    const val pagerIndicators = "$group:accompanist-pager-indicators:$version"
-    const val flowlayout = "$group:accompanist-flowlayout:$version"
-}
-
-object Glance {
-    private const val glance_version = "1.0.0"
-
-    // For AppWidgets support
-    const val glance = "androidx.glance:glance-appwidget:$glance_version"
-
-    // For interop APIs with Material 3
-    const val glance_material3 = "androidx.glance:glance-material3:$glance_version"
 }
